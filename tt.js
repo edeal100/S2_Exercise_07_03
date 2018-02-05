@@ -9,7 +9,7 @@ Filename: tt.js
 
 var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wedneday", "Thursday", "Friday", "Saturday"];
 
-var opponents = ["Lightning", "Combines", "Combines", "Lightning", "Lightning", "Lightning", "Lightning", "Barn Raisers", "Barn Raisers", "Barn Raisers", "Sodbusters", "Sodbusters", "Sodbusters", "Sodbusters", "(off)", "River Riders", "River Riders", "River Riders", "Big Dippers", "Big Dippers", "Big Dippers", "(off)", "Sodbusters", "Sodbusters", "Sodbusters", "Combines", "Combines", "Combines", "(off)", "(off)"];
+var opponents = ["Lightning", "Combines", "Combines", "Combines", "Lightning", "Lightning", "Lightning", "Lightning", "Barn Raisers", "Barn Raisers", "Barn Raisers", "Sodbusters", "Sodbusters", "Sodbusters", "Sodbusters", "(off)", "River Riders", "River Riders", "River Riders", "Big Dippers", "Big Dippers", "Big Dippers", "(off)", "Sodbusters", "Sodbusters", "Sodbusters", "Combines", "Combines", "Combines", "(off)", "(off)"];
 
 var gameLocation = ["away", "away", "away", "away", "home", "home", "home", "home", "home", "home", "home", "away", "away", "away", "away", "", "away", "away", "away", "away", "away", "away", "", "home", "home", "home", "home", "home", "home", "", ""];
 
@@ -36,14 +36,26 @@ function addCalendarDates(){
   while (i <= 31);
 }
 
-//function to place opponents values in second paragraph element within each table data cell that has an id
+//function to place opponents and gameLocation values in second paragraph element within each table data cell that has an id
 function addGameInfo() {
   var paragraphs = "";
   for (var i = 0; i < 31; i++) {
     var date = i + 1;
     var tableCell = document.getElementById("08-" + date);
     paragraphs = tableCell.getElementsByTagName("p");
-    paragraphs[1].innerHTML += opponents[i];
+    /*  if (gameLocation[i] === "away") {
+        paragraphs[1].innerHTML = "@ ";
+      }
+      if (gameLocation[i] === "home") {
+        paragraphs[1].innerHTML = "vs ";
+      } */
+      if (gameLocation[i] === "away") {
+        paragraphs[1].innerHTML = "@ ";
+      }
+      else {
+        paragraphs[1].innerHTML = "vs ";
+      }
+      paragraphs[1].innerHTML += opponents[i];
   }
 }
 
